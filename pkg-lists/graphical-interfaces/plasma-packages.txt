@@ -1,0 +1,7 @@
+plasma-desktop
+sddm
+konsole
+dolphin
+xorg-xwayland
+wayland
+kde-system-meta

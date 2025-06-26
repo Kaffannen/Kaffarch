@@ -1,0 +1,6 @@
+xorg-server
+xorg-xinit
+xf86-video-vesa
+xfce4
+xfce4-goodies
+sddm

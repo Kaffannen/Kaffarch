@@ -1,0 +1,7 @@
+base
+linux
+linux-firmware
+lvm2
+mkinitcpio
+grub
+efibootmgr

@@ -1,0 +1,8 @@
+sway
+wayland-utils
+xorg-xwayland
+swaybg
+swayidle
+swaylock
+sddm
+wayland-protocols
