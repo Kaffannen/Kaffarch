@@ -5,9 +5,20 @@ set -euo pipefail
 echo "Cleaning up old build directories..."
 rm -rf work out
 
-#Update releng directory
-./install-scripts/releng-preparation.sh
+# Create backup copy of releng
+cp -r ./releng releng-backup
 
-# Run archiso
+# Update releng directory
+./install-scripts/releng-management/prepare_releng.sh
+
+# Run archiso to build ISO into /out
 echo "Starting ISO build..."
-mkarchiso -v -o /media/sf_ArchIsos .
+# mkarchiso -v -o /media/sf_ArchIsos ./releng
+mkarchiso -v -o out releng
+
+# Restore original releng directory
+rm -rf releng
+mv releng-backup releng
+
+# Delete work directory
+rm -if work
