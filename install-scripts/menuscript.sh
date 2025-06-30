@@ -112,6 +112,7 @@ handle_install_menu() {
     done
 }
 
+
 # Main program function
 main() {
     local choice

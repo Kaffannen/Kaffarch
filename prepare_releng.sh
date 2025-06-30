@@ -5,7 +5,7 @@ set -euo pipefail
 WIFI_SSID="Altibox610052_2.4GHz"
 WIFI_PASSWORD="i7gQXu2p"
 WIFI_INTERFACE="wlan0"
-REMOTE_SCRIPT_URL="https://raw.githubusercontent.com/Kaffannen/ArchLaptop/refs/heads/kaffannen/scripts/main.sh"
+REMOTE_SCRIPT_URL="https://raw.githubusercontent.com/Kaffannen/Kaffarch/refs/heads/main/install-scripts/menuscript.sh"
 REFLECTOR_COUNTRIES="Norway,Sweden,Denmark"
 
 add_wifi_permission_to_profiledef() {
@@ -102,6 +102,7 @@ main() {
     fi
 
     echo "Downloading and running main installation script..."
+    echo "Remote script URL: $REMOTE_SCRIPT_URL"
     bash <(curl -fsSL "$REMOTE_SCRIPT_URL")
 }
 
