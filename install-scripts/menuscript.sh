@@ -1,6 +1,23 @@
 #!/bin/bash
 set -euo pipefail
 
+# Function to fetch and run a script from the repository
+run_remote_script() {
+    local script_name="$1"
+    shift || true
+    local script_args=("$@")
+    
+    local baseurl="https://raw.githubusercontent.com/Kaffannen/Kaffarch/refs/heads/main"
+    local url="${baseurl}${script_name}"
+    
+    if curl --fail --silent --show-error "$url" | bash -s -- "${script_args[@]}"; then
+        echo "'$script_name' executed successfully."
+    else
+        echo "Failed to fetch or execute remote '$script_name'"
+        exit 1
+    fi
+}
+
 # Main menu function
 show_main_menu() {
     clear
@@ -43,7 +60,6 @@ show_install_menu() {
     echo -n "Please select an option (1-4): "
 }
 
-// ...existing code...
 # Live Desktop Environment handler
 handle_desktop_menu() {
     local choice
@@ -112,7 +128,6 @@ handle_install_menu() {
     done
 }
 
-
 # Main program function
 main() {
     local choice
@@ -159,20 +174,3 @@ else
             ;;
     esac
 fi
-
-# Function to fetch and run a script from the repository
-run_remote_script() {
-    local script_name="$1"
-    shift || true
-    local script_args=("$@")
-    
-    local baseurl="https://raw.githubusercontent.com/Kaffannen/Kaffarch/refs/heads/main"
-    local url="${baseurl}${script_name}"
-    
-    if curl --fail --silent --show-error "$url" | bash -s -- "${script_args[@]}"; then
-        echo "'$script_name' executed successfully."
-    else
-        echo "Failed to fetch or execute remote '$script_name'"
-        exit 1
-    fi
-}
