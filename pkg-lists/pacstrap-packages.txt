@@ -5,3 +5,5 @@ lvm2
 mkinitcpio
 grub
 efibootmgr
+sudo
+networkmanager

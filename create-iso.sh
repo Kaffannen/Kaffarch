@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Remove existing build artifacts
-echo "Cleaning up old build directories..."
-rm -rf work out
+main() {
+    echo "=== Kaffarch ISO Creation Started ==="
+    
+    echo "Cleaning up old build directories..."
+    rm -rf work out
 
-# Create backup copy of releng
-cp -r ./releng releng-backup
+    cp -r ./releng releng-backup
 
-# Update releng directory
-./install-scripts/releng-management/prepare_releng.sh
+    ./prepare_releng.sh
 
-# Run archiso to build ISO into /out
-echo "Starting ISO build..."
-# mkarchiso -v -o /media/sf_ArchIsos ./releng
-mkarchiso -v -o out releng
+    echo "Starting ISO build..."
+    mkarchiso -v -o out releng
 
-# Restore original releng directory
-rm -rf releng
-mv releng-backup releng
+    rm -rf releng
+    mv releng-backup releng
 
-# Delete work directory
-rm -if work
+    rm -rf work 
+    
+    echo "=== Kaffarch ISO Creation Completed ==="
+}
+
+main
